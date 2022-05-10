@@ -1,10 +1,16 @@
 namespace SpriteKind {
     export const PhysicsEnabled = SpriteKind.create()
     export const hidden = SpriteKind.create()
+    export const Block = SpriteKind.create()
 }
+sprites.onDestroyed(SpriteKind.Block, function (sprite) {
+    info.changeScoreBy(1)
+})
 sprites.onOverlap(SpriteKind.PhysicsEnabled, SpriteKind.Player, function (sprite, otherSprite) {
     moveRandom(PingPong_Ball)
-    info.changeScoreBy(1)
+})
+sprites.onOverlap(SpriteKind.PhysicsEnabled, SpriteKind.Block, function (sprite, otherSprite) {
+    otherSprite.destroy()
 })
 sprites.onOverlap(SpriteKind.PhysicsEnabled, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
@@ -22,24 +28,6 @@ PlayerSpr.setStayInScreen(true)
 PlayerSpr.setPosition(80, 100)
 PingPong_Ball = sprites.create(assets.image`ballTXTR`, SpriteKind.PhysicsEnabled)
 PingPong_Ball.setBounceOnWall(true)
-let pingpongfollow = sprites.create(img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `, SpriteKind.hidden)
 PingPong_Ball.setVelocity(0, 50)
 info.setLife(1)
 info.setScore(0)
@@ -75,3 +63,24 @@ let deth15 = sprites.create(assets.image`dethTXTR`, SpriteKind.Enemy)
 deth15.setPosition(145, 110)
 let deth16 = sprites.create(assets.image`dethTXTR`, SpriteKind.Enemy)
 deth16.setPosition(155, 110)
+let block1 = sprites.create(assets.image`blockTXTR`, SpriteKind.Block)
+block1.setPosition(16, 16)
+scaling.scaleByPixels(PingPong_Ball, -5, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+scaling.scaleByPixels(block1, 10, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+let block2 = sprites.create(assets.image`blockTXTR`, SpriteKind.Block)
+block2.setPosition(16, 32 + 16)
+scaling.scaleByPixels(block2, 10, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+let block3 = sprites.create(assets.image`blockTXTR`, SpriteKind.Block)
+block3.setPosition(16 + 16 + 16, 16)
+scaling.scaleByPixels(block3, 10, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+let block4 = sprites.create(assets.image`blockTXTR`, SpriteKind.Block)
+block4.setPosition(32 + 16, 32 + 16)
+scaling.scaleByPixels(block4, 10, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+let block5 = sprites.create(assets.image`blockTXTR`, SpriteKind.Block)
+block5.setPosition(64 + 16, 16)
+scaling.scaleByPixels(block5, 10, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+game.onUpdate(function () {
+    if (info.score() == 5) {
+        game.over(true)
+    }
+})
