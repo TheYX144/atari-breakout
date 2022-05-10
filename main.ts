@@ -79,8 +79,22 @@ scaling.scaleByPixels(block4, 10, ScaleDirection.Uniformly, ScaleAnchor.Middle)
 let block5 = sprites.create(assets.image`blockTXTR`, SpriteKind.Block)
 block5.setPosition(64 + 16, 16)
 scaling.scaleByPixels(block5, 10, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+let block6 = sprites.create(assets.image`blockTXTR`, SpriteKind.Block)
+block6.setPosition(64+32+16, 16)
+scaling.scaleByPixels(block6, 10, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+let block7 = sprites.create(assets.image`blockTXTR`, SpriteKind.Block)
+block7.setPosition(64+32+16, 32+16)
+scaling.scaleByPixels(block7, 10, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+let block8 = sprites.create(assets.image`blockTXTR`, SpriteKind.Block)
+block8.setPosition(64+32+32+16, 16)
+scaling.scaleByPixels(block8, 10, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+let block9 = sprites.create(assets.image`blockTXTR`, SpriteKind.Block)
+block9.setPosition(64+32+32+16, 32+16)
+scaling.scaleByPixels(block9, 10, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+
+
 game.onUpdate(function () {
-    if (info.score() == 5) {
+    if (info.score() >= 9) {
         game.over(true)
     }
 })
