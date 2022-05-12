@@ -19,7 +19,7 @@ info.onLifeZero(function () {
     game.over(false)
 })
 function moveRandom (mySprite: Sprite) {
-    mySprite.setVelocity(randint(-100, 100), -100)
+    mySprite.setVelocity(randint(-100, 100), -50)
 }
 let PingPong_Ball: Sprite = null
 let PlayerSpr = sprites.create(assets.image`PaddleTXTR`, SpriteKind.Player)
