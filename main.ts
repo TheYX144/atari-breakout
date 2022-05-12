@@ -5,6 +5,7 @@ namespace SpriteKind {
 }
 sprites.onDestroyed(SpriteKind.Block, function (sprite) {
     info.changeScoreBy(1)
+    PingPong_Ball.setVelocity(randint(-50, 50), 50)
 })
 sprites.onOverlap(SpriteKind.PhysicsEnabled, SpriteKind.Player, function (sprite, otherSprite) {
     moveRandom(PingPong_Ball)
@@ -19,7 +20,7 @@ info.onLifeZero(function () {
     game.over(false)
 })
 function moveRandom (mySprite: Sprite) {
-    mySprite.setVelocity(randint(-100, 100), -100)
+    mySprite.setVelocity(randint(-50, 50), -50)
 }
 let PingPong_Ball: Sprite = null
 let PlayerSpr = sprites.create(assets.image`PaddleTXTR`, SpriteKind.Player)
@@ -80,19 +81,17 @@ let block5 = sprites.create(assets.image`blockTXTR`, SpriteKind.Block)
 block5.setPosition(64 + 16, 16)
 scaling.scaleByPixels(block5, 10, ScaleDirection.Uniformly, ScaleAnchor.Middle)
 let block6 = sprites.create(assets.image`blockTXTR`, SpriteKind.Block)
-block6.setPosition(64+32+16, 16)
+block6.setPosition(64 + 32 + 16, 16)
 scaling.scaleByPixels(block6, 10, ScaleDirection.Uniformly, ScaleAnchor.Middle)
 let block7 = sprites.create(assets.image`blockTXTR`, SpriteKind.Block)
-block7.setPosition(64+32+16, 32+16)
+block7.setPosition(64 + 32 + 16, 32 + 16)
 scaling.scaleByPixels(block7, 10, ScaleDirection.Uniformly, ScaleAnchor.Middle)
 let block8 = sprites.create(assets.image`blockTXTR`, SpriteKind.Block)
-block8.setPosition(64+32+32+16, 16)
+block8.setPosition(64 + 32 + 32 + 16, 16)
 scaling.scaleByPixels(block8, 10, ScaleDirection.Uniformly, ScaleAnchor.Middle)
 let block9 = sprites.create(assets.image`blockTXTR`, SpriteKind.Block)
-block9.setPosition(64+32+32+16, 32+16)
+block9.setPosition(64 + 32 + 32 + 16, 32 + 16)
 scaling.scaleByPixels(block9, 10, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-
-
 game.onUpdate(function () {
     if (info.score() >= 9) {
         game.over(true)
