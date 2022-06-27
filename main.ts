@@ -24,6 +24,9 @@ info.onLifeZero(function () {
 function moveRandom (mySprite: Sprite) {
     mySprite.setVelocity(randint(-50, 50), -50)
 }
+controller.combos.attachCombo("babb", function () {
+    info.setLife(3)
+})
 let PingPong_Ball: Sprite = null
 let PlayerSpr = sprites.create(assets.image`PaddleTXTR`, SpriteKind.Player)
 controller.moveSprite(PlayerSpr, 100, 0)
