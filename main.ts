@@ -10,7 +10,6 @@ sprites.onDestroyed(SpriteKind.Block, function (sprite) {
 })
 sprites.onOverlap(SpriteKind.PhysicsEnabled, SpriteKind.mean, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
-    pause(100)
     PingPong_Ball.setPosition(80, 60)
 })
 sprites.onOverlap(SpriteKind.PhysicsEnabled, SpriteKind.Player, function (sprite, otherSprite) {
